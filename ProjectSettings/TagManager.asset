@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BulletCollider
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -14,10 +16,10 @@ TagManager:
   - 
   - 
   - Arena
+  - Shield
   - 
-  - 
-  - 
-  - 
+  - MagicCircle
+  - Feet
   - 
   - 
   - 
@@ -41,8 +43,14 @@ TagManager:
   - name: Background
     uniqueID: 205697829
     locked: 0
+  - name: Circle
+    uniqueID: 1353230745
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bullets
+    uniqueID: 1731686219
     locked: 0
   - name: UI
     uniqueID: 556372405

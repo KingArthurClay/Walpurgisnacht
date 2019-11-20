@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9016308560166894531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496494981954801050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07f698432f874b539fafe4dc68ca32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 12
+  dashDuration: 0.3
+  shieldPrefab: {fileID: 3468574417592078, guid: 8ea076bf608a541ce95073158aa7de92,
+    type: 3}
 --- !u!114 &-8307635674473614645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +29,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.7075472, g: 0.130162, b: 0.44533914, a: 1}
-  outlineSize: 16
+  outlineSize: 2
+--- !u!114 &5119666393153459865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496494981954801050}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc764c6d07a2944eb432f6e436fe6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beamInterval: 5
+  beamPrefab: {fileID: 9103603990311279996, guid: 04c432ca4c079f34497391c8c5b86734,
+    type: 3}
+  bulletInterval: 0.05
+  bulletSpeed: 4
+  bulletPrefab: {fileID: 8242620669631801499, guid: 452fac5f85e892b409e2bb25ea3587d4,
+    type: 3}
+--- !u!114 &6377821432702206397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496494981954801050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7616f69ffbb2cb7489bb6b29bb1425b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startShot: {x: 0, y: 0}
+  primaryPrefab: {fileID: 6762222865976803033, guid: 7476bfb810a210840a4d339ccb84b091,
+    type: 3}
+  heavyPrefab: {fileID: 7482625195412196960, guid: e78c72329e9f66b41baff2dc810ea42b,
+    type: 3}
+  primarySpeed: 5
+  heavySpeed: 3
+  primaryProjectiles: 15
+  heavyProjectiles: 3
 --- !u!1001 &7636391126221395878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26,6 +82,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rhea
       objectReference: {fileID: 0}
+    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 812fa16c7f8d5e4429822cac32e94698,
+        type: 3}
+    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35c5848a3a380f645a1fb08ab60897c7, type: 2}
     - target: {fileID: 6313812592357874237, guid: 229099dc1155e2d468579de6896f1acd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,17 +148,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
+    - target: {fileID: -2274170633725359417, guid: 229099dc1155e2d468579de6896f1acd,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 21300000, guid: 812fa16c7f8d5e4429822cac32e94698,
-        type: 3}
-    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 35c5848a3a380f645a1fb08ab60897c7, type: 2}
+      objectReference: {fileID: 9100000, guid: fa399829902e61b4ea647d28466d793f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229099dc1155e2d468579de6896f1acd, type: 3}
 --- !u!1 &4496494981954801050 stripped

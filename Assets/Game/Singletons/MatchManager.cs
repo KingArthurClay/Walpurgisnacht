@@ -45,6 +45,8 @@ public class MatchManager : Singleton<MatchManager>
     private Image[] playerCharacterImages = null;
     [SerializeField]
     private Color[] playerOutlineColors = new Color[2];
+    public Color GetPlayerOutlineColor(int playerNumber) { return playerOutlineColors[playerNumber]; }
+
     private int[] _playerScores = new int[2];
     private void SetPlayerScore(int playerNumber, int value)
     {
@@ -57,6 +59,7 @@ public class MatchManager : Singleton<MatchManager>
     }
 
     private GameObject[] players = new GameObject[2];
+    public GameObject[] Players { get { return players; } }
 
     private int lastWordPlayerNumber;
     private bool lastWordActive;
@@ -98,9 +101,18 @@ public class MatchManager : Singleton<MatchManager>
         LastWordTimer = lastWordDuration;
         int victimPlayerNumber = lastWordPlayerNumber == 0 ? 1 : 0;
 
+        ClearBullets();
         PlayerStatsManager.Instance.StashWards(victimPlayerNumber);
         OnLastWordStart?.Invoke(lastWordPlayerNumber);
         StartForcedMovement(true);
+    }
+
+    private void ClearBullets()
+    {
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Bullet"))
+        {
+            Destroy(g);
+        }
     }
 
     private void StartForcedMovement(bool isStartingLastWord)
@@ -130,7 +142,8 @@ public class MatchManager : Singleton<MatchManager>
                     selene.ChangeStateSoft<SeleneForceMoveState>(transitionInfo);
                     break;
                 case CharacterType.RHEA:
-                    // TODO: Do the same thing for Rhea once her states have been made
+                    Rhea rhea = players[playerNum].GetComponent<Rhea>();
+                    rhea.ChangeStateSoft<RheaForceMoveState>(transitionInfo);
                     break;
             }
         }
@@ -170,6 +183,7 @@ public class MatchManager : Singleton<MatchManager>
         lastWordActive = false;
         int victimPlayerNumber = lastWordPlayerNumber == 0 ? 1 : 0;
 
+        ClearBullets();
         PlayerStatsManager.Instance.PopWards(victimPlayerNumber);
         OnLastWordEnd?.Invoke();
         StartForcedMovement(false);
@@ -177,6 +191,15 @@ public class MatchManager : Singleton<MatchManager>
 
     private void ResetArena()
     {
+        ClearBullets();
+
+        // Handles edge case of game ending during Last Word
+        if (lastWordActive)
+        {
+            StopCoroutine(lastWordCoroutine);
+            EndLastWord();
+        }
+
         // Reset stats
         PlayerStatsManager.Instance.Start();
         SpellMap.Instance.ResetAllCooldowns();
@@ -185,13 +208,19 @@ public class MatchManager : Singleton<MatchManager>
         {
             // Cleanup old players
             if (players[playerNum])
+            {
+                players[playerNum].GetComponent<SharedCharacterController>().RemoveCircle();
+                SpellMap.Instance.ShowCircleCooldown(playerNum); // HACK: if they lose while their circle is cast this won't be called naturally
                 Destroy(players[playerNum]);
+            }
 
             // Spawn new players
             players[playerNum] = Instantiate(
                 characterPrefabs[(int)CharacterSelection.Instance.GetPlayerCharacterType(playerNum)],
                 spawnPoints[playerNum].position,
                 Quaternion.identity);
+
+            players[playerNum].transform.Find("Face").gameObject.SetActive(GlobalSettingsManager.Instance.CageMode); // ???
         }
 
         // Setup parameters for their tracking and controls

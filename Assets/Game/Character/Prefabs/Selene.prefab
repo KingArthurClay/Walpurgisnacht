@@ -28,6 +28,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.5247427, g: 0.130162, b: 0.7075472, a: 1}
   outlineSize: 2
+--- !u!114 &7726817127616369113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193138727480721282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42ac17f4512fcd4da45cce45c007dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryProjectiles: 6
+  primaryWaves: 3
+  primarySpeed: 2
+  lastWordSpeed: 4
+  lastWordLargeSpeed: 10
+  heavyProjectiles: 6
+  primaryPrefab: {fileID: 6033892601529742290, guid: e764d2a29cdf93346901678963e2ec69,
+    type: 3}
+  heavyPrefab: {fileID: 5743245757788245915, guid: bd4026251e8d1b64eb9651cd153a50c0,
+    type: 3}
+  lastWordPrefab: {fileID: 4497085296242156103, guid: c3c08094c774e5247ba7802177352ecf,
+    type: 3}
+  lastWordLargePrefab: {fileID: 6745252310710675079, guid: a760d5934e99a1548b479bc0cfaaa5db,
+    type: 3}
+  startShot: {x: 0, y: 0}
 --- !u!1001 &5327955258788472254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,11 +67,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Selene
       objectReference: {fileID: 0}
+    - target: {fileID: 6313812592357874236, guid: 229099dc1155e2d468579de6896f1acd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: -2274170633725359417, guid: 229099dc1155e2d468579de6896f1acd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: 086ee0e2af271b44797c085545ce0a4c, type: 2}
     - target: {fileID: -2274170633725359417, guid: 229099dc1155e2d468579de6896f1acd,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 086ee0e2af271b44797c085545ce0a4c, type: 2}
+    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35c5848a3a380f645a1fb08ab60897c7, type: 2}
     - target: {fileID: 6313812592357874237, guid: 229099dc1155e2d468579de6896f1acd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,11 +142,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6313812592357874239, guid: 229099dc1155e2d468579de6896f1acd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 35c5848a3a380f645a1fb08ab60897c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229099dc1155e2d468579de6896f1acd, type: 3}
 --- !u!1 &2193138727480721282 stripped
