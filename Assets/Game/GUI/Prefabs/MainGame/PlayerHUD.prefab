@@ -495,8 +495,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
-  wardSprite: {fileID: 21300000, guid: d9e91a50cdb16b349b76685e24fa1036, type: 3}
-  heartSprite: {fileID: 21300000, guid: 68ad4f8072996844592d107450f3a4dd, type: 3}
   healthIcons:
   - {fileID: 6457088897534181181}
   - {fileID: 9101793089055377252}
@@ -512,6 +510,7 @@ GameObject:
   - component: {fileID: 1423610546619085251}
   - component: {fileID: 1423610546619085249}
   - component: {fileID: 1423610546619085248}
+  - component: {fileID: 6256711630775621935}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -561,6 +560,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1
+--- !u!225 &6256711630775621935
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423610546619085250}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1423610546649014669
 GameObject:
   m_ObjectHideFlags: 0
